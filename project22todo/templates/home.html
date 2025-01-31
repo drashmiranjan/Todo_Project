@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>My TODO</h2>
+        <p>Plan Your Day</p>
+        <form method="POST">
+            {% csrf_token %}
+            {% comment %} <label for="slno">Serial Number</label>
+            <input type="number" id="slno" name="slno" required> {% endcomment %}
+
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+   {% if todos %}
+   <div class="table-container">
+    <h2>TODO Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sl No</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %} 
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{todo.title}}</td>
+                <td>{{todo.desc}}</td>
+                <td>
+                    <a href="{% url 'update' todo.pk %}"><button type="button" id="up">Update</button></a>
+                    <a href="{% url 'delete' todo.pk %}"><button type="button" id="del">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %} <h1>Dabba First Add Your Task <h1/>
+   {% endif %}
+</body>
+</html>

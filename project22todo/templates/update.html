@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>My TODO</h2>
+    <p>Plan Your Day</p>
+    <form method="POST">
+        {% csrf_token %}
+        {% comment %} <label for="slno">Serial Number</label>
+        <input type="number" id="slno" name="slno" required> {% endcomment %}
+
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required value = {{Tobj.title}} >
+
+        <label for="description">Description</label>    
+        <input type="text" id="title" name="title" required value = {{Tobj.desc}} >
+
+        {% comment %} <textarea id="description" name="description" rows="4" value={{Tobj.desc}} required ></textarea> {% endcomment %}
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
