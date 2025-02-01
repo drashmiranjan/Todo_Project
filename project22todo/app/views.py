@@ -19,7 +19,7 @@ def update(request, pk):
     d = {'Tobj':Tobj}
     if request.method == 'POST':
         title = request.POST.get('title')
-        desc = request.POST.get('description')
+        desc = request.POST.get('desc')
         Tobj.title = title
         Tobj.desc = desc
         Tobj.save()
